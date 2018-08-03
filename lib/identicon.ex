@@ -12,16 +12,16 @@ defmodule Identicon do
   # save as image
 
   def main(input) do
-    input
-      |> hash_input
-      |> pick_color
+    d = input
+      |> hash_input()
+      |> pick_color()
+      |> build_grid()
   end
 
   def hash_input(input) do
       hex = :crypto.hash(:md5, input)
         |> :binary.bin_to_list()
       %Identicon.Image{hex: hex}
-
   end
 
   defp pick_color(%Identicon.Image{hex: [r, g, b | _tail]} = image) do
