@@ -28,4 +28,13 @@ defmodule Identicon do
     %Identicon.Image{image | rgb: {r, g, b}}
   end
 
+  defp build_grid(img) do
+    grid = img.hex
+    |> Enum.chunk_every(3)
+    |> Enum.map(fn x -> mirror_row(x) end)
+    %Identicon.Image{img | grid: grid}
+  end
+
+  defp mirror_row([a, b, c]), do: [a, b, c, b, a]
+
 end
