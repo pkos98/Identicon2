@@ -39,6 +39,10 @@ defmodule Identicon do
 
   def mirror_row([a, b, c]), do: [a, b, c, b, a]
   def mirror_row([a]), do: [a]
+
+  def filter_odd_squares(%Identicon.Image{grid: grid} = img) do
+    grid = grid |> Enum.filter(fn x ->
+      Integer.is_even(elem(x, 0)) end)
     %Identicon.Image{img | grid: grid}
   end
 
