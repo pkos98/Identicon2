@@ -32,6 +32,10 @@ defmodule Identicon do
     grid = img.hex
     |> Enum.chunk_every(3)
     |> Enum.map(fn x -> mirror_row(x) end)
+    |> List.flatten()
+    |> Enum.with_index()
+    %Identicon.Image{img | grid: grid}
+  end
     %Identicon.Image{img | grid: grid}
   end
 
