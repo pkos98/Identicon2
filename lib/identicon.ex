@@ -36,6 +36,9 @@ defmodule Identicon do
     |> Enum.with_index()
     %Identicon.Image{img | grid: grid}
   end
+
+  def mirror_row([a, b, c]), do: [a, b, c, b, a]
+  def mirror_row([a]), do: [a]
     %Identicon.Image{img | grid: grid}
   end
 
